@@ -24,6 +24,10 @@ export const TreeNode = (props) => {
   const onSaveNodeClick = (e) => {
     e.preventDefault();
 
+    if (!newNodeName.trim()) {
+      return alert("Please input a node name");
+    }
+
     const nameCheck = findNodeByName({ nodes: data, newNodeName });
     if (nameCheck) {
       return alert("Name already taken");
@@ -53,6 +57,11 @@ export const TreeNode = (props) => {
 
   const onSaveNodeNameClick = (e) => {
     e.preventDefault();
+
+    if (!newNodeName.trim()) {
+      return alert("Please input a node name");
+    }
+
     const nameCheck = findNodeByName({ nodes: data, newNodeName });
     if (nameCheck) {
       return alert("Name already taken");
