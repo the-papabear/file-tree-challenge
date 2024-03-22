@@ -26,7 +26,6 @@ export const TreeRoot = (props) => {
       nodes: data,
       newNodeName: searchQuery,
     });
-    console.log("SEARCH NODE RESULT", foundNode);
 
     if (!foundNode) {
       return alert("No node found");
