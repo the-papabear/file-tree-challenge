@@ -25,15 +25,21 @@ export const updateNodeName = ({ nodes, newNodeName, selectedNodeName }) => {
 };
 
 export const findNodeByName = ({ nodes, newNodeName }) => {
-  return nodes.find((node) => {
-    const name = node.name === newNodeName;
-
-    if (name) {
-      return node;
-    }
-
-    if (node.children.length) {
-      return findNodeByName({ nodes: node.children, newNodeName });
-    }
+  const foundNode = nodes.find((node) => {
+    return node.name === newNodeName;
   });
+
+  if (foundNode) {
+    return foundNode;
+  }
+
+  for (const node of nodes) {
+    if (node.children.length) {
+      const result = findNodeByName({ nodes: node.children, newNodeName });
+
+      if (result) {
+        return result;
+      }
+    }
+  }
 };

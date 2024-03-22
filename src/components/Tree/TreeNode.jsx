@@ -71,7 +71,12 @@ export const TreeNode = (props) => {
 
   return (
     <div className="tree">
-      <div className="tree__node">
+      <div
+        className={`tree__node ${
+          selectedNodeName === node.name ? "tree__node--selected" : ""
+        }`}
+        onClick={() => setSelectedNodeName(node.name)}
+      >
         <Icon name="Folder" className="tree__icon" />
         {isEditNodeNameFormOpen ? (
           <NodeNameInputForm
@@ -82,12 +87,11 @@ export const TreeNode = (props) => {
           />
         ) : (
           <div className="tree__nameContainer">
-            <div onClick={() => setSelectedNodeName(node.name)}>
-              {node.name}
-            </div>
+            <p className="tree__nodeName ">{node.name}</p>
             {isNewNodeFormOpen ? (
               <NodeNameInputForm
                 value={newNodeName}
+                placeholder="Child node name..."
                 onSaveBtnClick={onSaveNodeClick}
                 onValueChange={handleNewNodeNameChange}
                 onCancelBtnClick={onCancelNewNodeClick}
@@ -117,6 +121,7 @@ export const TreeNode = (props) => {
 
 const NodeNameInputForm = ({
   value,
+  placeholder,
   onValueChange,
   onSaveBtnClick,
   onCancelBtnClick,
@@ -126,6 +131,7 @@ const NodeNameInputForm = ({
       <input
         type="text"
         value={value}
+        placeholder={placeholder}
         onChange={onValueChange}
         className="nameInput"
       />

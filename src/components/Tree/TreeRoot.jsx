@@ -22,14 +22,17 @@ export const TreeRoot = (props) => {
   const onSearchNodeClick = (e) => {
     e.preventDefault();
 
-    const res = findNodeByName({
+    const foundNode = findNodeByName({
       nodes: data,
       newNodeName: searchQuery,
     });
+    console.log("SEARCH NODE RESULT", foundNode);
 
-    if (!res) {
-      alert("No node found");
+    if (!foundNode) {
+      return alert("No node found");
     }
+
+    setSelectedNodeName(foundNode.name);
   };
 
   return (

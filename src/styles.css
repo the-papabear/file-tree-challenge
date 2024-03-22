@@ -4,6 +4,10 @@ body {
   background-color: hsl(0, 0%, 90%);
 }
 
+p {
+  margin: 0;
+}
+
 button {
   border: none;
 }
