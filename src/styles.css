@@ -1,4 +1,22 @@
+/* The smallest of resets */
+body {
+  margin: 0;
+  background-color: hsl(0, 0%, 90%);
+}
+
+button {
+  border: none;
+}
+
+/* Vars */
+:root {
+  --primary: hsl(225, 99%, 48%);
+  --primary-hover: hsl(202, 98%, 50%);
+  --primary-hover-40: hsla(202, 98%, 50%, 0.4);
+}
+
 .app {
   font-family: sans-serif;
   text-align: left;
+  padding: 1rem;
 }

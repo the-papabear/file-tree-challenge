@@ -5,12 +5,8 @@ This is a take-home assignment from one of my interviews. The challenge was to b
 Initial specs:
 
 - for implementation use data.js
-- Render tree
-- Add node based on selected parent name (the name should be unique)
-- Edit node name (the name should be unique)
-- Find node by name
-- Keep current tree state in localStorage
-
-TO DO:
-
-- [ ] Create writeframe for the component
+- [x] Render tree
+- [x] Add node based on selected parent name (the name should be unique)
+- [x] Edit node name (the name should be unique)
+- [x] Find node by name
+- [x] Keep current tree state in localStorage

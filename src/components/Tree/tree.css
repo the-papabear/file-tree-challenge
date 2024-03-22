@@ -1,0 +1,115 @@
+.searchBox {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.searchBox__input,
+.nameInput {
+  border-radius: 0.3rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+.searchBox__btn,
+.nameInput__btn,
+.nameInput__btn--destructive {
+  background-color: var(--primary);
+  padding: 0.5rem 1rem;
+
+  border-radius: 0.3rem;
+  color: white;
+  cursor: pointer;
+}
+
+.nameInput__btn {
+  background-color: hsl(0, 0%, 51%);
+}
+
+.nameInput__btn--destructive {
+  background-color: hsl(354, 98%, 62%);
+}
+
+.searchBox__btnIcon {
+  stroke: white;
+}
+
+.searchBox__btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.searchBox__btn:active > .searchBox__btnIcon {
+  stroke: rgb(50, 51, 105);
+}
+
+.tree__container {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  min-width: 10rem;
+  width: fit-content;
+
+  background-color: white;
+
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid hsl(0, 0%, 75%);
+}
+
+.tree {
+  padding-left: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tree__nameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tree__node {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}
+
+.tree__node:hover {
+  background-color: var(--primary-hover-40);
+}
+
+.tree__contextMenu {
+  visibility: hidden;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+
+  flex: 1;
+}
+
+/* TODO: selectedNodeName should influence the visibility of this */
+.tree__node:hover > .tree__contextMenu {
+  visibility: visible;
+}
+
+.tree_inputForm {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.inputForm__btnContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.tree__icon {
+  align-self: flex-start;
+}
