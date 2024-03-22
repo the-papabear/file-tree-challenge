@@ -12,9 +12,9 @@ export const TreeInputForm = (props) => {
       <input
         type="text"
         value={value}
-        placeholder={placeholder}
-        onChange={onValueChange}
         className="nameInput"
+        onChange={onValueChange}
+        placeholder={placeholder}
       />
       <div className="inputForm__btnContainer">
         <button

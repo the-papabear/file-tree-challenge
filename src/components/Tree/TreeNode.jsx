@@ -113,10 +113,10 @@ export const TreeNode = (props) => {
 
         <div className="tree__contextMenu">
           <button style={{ all: "unset" }} onClick={onEditNodeClick}>
-            <Icon name="Pencil" />
+            <Icon name="Pencil" className="contextMenu__btn--edit" />
           </button>
           <button style={{ all: "unset" }} onClick={onAddNodeClick}>
-            <Icon name="FolderPlus" />
+            <Icon name="FolderPlus" className="contextMenu__btn--add" />
           </button>
         </div>
       </div>

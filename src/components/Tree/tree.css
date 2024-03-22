@@ -50,6 +50,16 @@
   flex: 1;
 }
 
+.contextMenu__btn--edit:hover,
+.contextMenu__btn--add:hover {
+  stroke: hsl(0, 0%, 48%);
+}
+
+.contextMenu__btn--edit:active,
+.contextMenu__btn--add:active {
+  stroke: var(--primary);
+}
+
 .tree__node--selected {
   background-color: var(--primary-hover-40);
 }
@@ -117,6 +127,14 @@
 
 .nameInput__btn--destructive {
   background-color: hsl(354, 98%, 62%);
+}
+
+.nameInput__btn--destructive:hover {
+  background-color: hsl(354, 86%, 69%);
+}
+
+.nameInput__btn--destructive:active {
+  background-color: hsl(354, 96%, 52%);
 }
 
 .inputForm__btnContainer {
