@@ -1,17 +1,16 @@
 import Icon from "../Icon";
 
-export const TreeSearchBox = ({ onSearchNodeClick, setSearchQuery }) => {
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
+export const TreeSearchBox = (props) => {
+  const { searchQueryValue, onSearchNodeClick, onSearchQueryChange } = props;
 
   return (
     <form className="searchBox">
       <input
         type="text"
+        value={searchQueryValue}
         placeholder="Search node"
         className="searchBox__input"
-        onChange={handleSearchChange}
+        onChange={onSearchQueryChange}
       />
       <button
         type="submit"

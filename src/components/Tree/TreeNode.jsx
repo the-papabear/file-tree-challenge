@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 import Icon from "../Icon";
 import { TreeDataContext } from "./TreeRoot";
+import { TreeInputForm } from "./TreeInputForm";
 import { addChild, findNodeByName, updateNodeName } from "../../utils";
 
 export const TreeNode = (props) => {
@@ -17,11 +18,22 @@ export const TreeNode = (props) => {
     setIsNewNodeFormOpen(true);
   };
 
-  const handleNewNodeNameChange = (e) => {
+  const onEditNodeClick = () => {
+    setIsEditNodeNameFormOpen(true);
+    setNewNodeName(selectedNodeName);
+  };
+
+  const onTreeFormClose = () => {
+    setNewNodeName("");
+    setIsNewNodeFormOpen(false);
+    setIsEditNodeNameFormOpen(false);
+  };
+
+  const onNewNodeNameChange = (e) => {
     setNewNodeName(e.target.value);
   };
 
-  const onSaveNodeClick = (e) => {
+  const onSaveChildNodeClick = (e) => {
     e.preventDefault();
 
     if (!newNodeName.trim()) {
@@ -40,19 +52,7 @@ export const TreeNode = (props) => {
     });
     setData(values);
 
-    setIsNewNodeFormOpen(false);
-    setNewNodeName("");
-  };
-
-  const onCancelNewNodeClick = () => {
-    setIsNewNodeFormOpen(false);
-    setIsEditNodeNameFormOpen(false);
-    setNewNodeName("");
-  };
-
-  const onEditNodeClick = () => {
-    setIsEditNodeNameFormOpen(true);
-    setNewNodeName(selectedNodeName);
+    onTreeFormClose();
   };
 
   const onSaveNodeNameClick = (e) => {
@@ -74,8 +74,7 @@ export const TreeNode = (props) => {
     });
     setData(values);
 
-    setIsEditNodeNameFormOpen(false);
-    setNewNodeName("");
+    onTreeFormClose();
   };
 
   return (
@@ -88,28 +87,30 @@ export const TreeNode = (props) => {
       >
         <Icon name="Folder" className="tree__icon" />
         {isEditNodeNameFormOpen ? (
-          <NodeNameInputForm
+          <TreeInputForm
             value={newNodeName}
+            placeholder="Node name..."
+            onCancelBtnClick={onTreeFormClose}
+            onValueChange={onNewNodeNameChange}
             onSaveBtnClick={onSaveNodeNameClick}
-            onValueChange={handleNewNodeNameChange}
-            onCancelBtnClick={onCancelNewNodeClick}
           />
         ) : (
           <div className="tree__nameContainer">
             <p className="tree__nodeName ">{node.name}</p>
             {isNewNodeFormOpen ? (
-              <NodeNameInputForm
+              <TreeInputForm
                 value={newNodeName}
                 placeholder="Child node name..."
-                onSaveBtnClick={onSaveNodeClick}
-                onValueChange={handleNewNodeNameChange}
-                onCancelBtnClick={onCancelNewNodeClick}
+                onCancelBtnClick={onTreeFormClose}
+                onValueChange={onNewNodeNameChange}
+                onSaveBtnClick={onSaveChildNodeClick}
               />
             ) : (
               ""
             )}
           </div>
         )}
+
         <div className="tree__contextMenu">
           <button style={{ all: "unset" }} onClick={onEditNodeClick}>
             <Icon name="Pencil" />
@@ -119,47 +120,12 @@ export const TreeNode = (props) => {
           </button>
         </div>
       </div>
+
       {node.children.length
         ? node.children.map((childNode) => (
             <TreeNode key={childNode.name} node={childNode} />
           ))
         : ""}
     </div>
-  );
-};
-
-const NodeNameInputForm = ({
-  value,
-  placeholder,
-  onValueChange,
-  onSaveBtnClick,
-  onCancelBtnClick,
-}) => {
-  return (
-    <form className="tree_inputForm">
-      <input
-        type="text"
-        value={value}
-        placeholder={placeholder}
-        onChange={onValueChange}
-        className="nameInput"
-      />
-      <div className="inputForm__btnContainer">
-        <button
-          type="submit"
-          onClick={onSaveBtnClick}
-          className="nameInput__btn"
-        >
-          Save Node
-        </button>
-        <button
-          type="reset"
-          onClick={onCancelBtnClick}
-          className="nameInput__btn--destructive"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
   );
 };

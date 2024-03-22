@@ -19,6 +19,10 @@ export const TreeRoot = (props) => {
     localStorage.setItem("nodes", JSON.stringify(data));
   }, [data]);
 
+  const onSearchQueryChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   const onSearchNodeClick = (e) => {
     e.preventDefault();
 
@@ -31,6 +35,7 @@ export const TreeRoot = (props) => {
       return alert("No node found");
     }
 
+    setSearchQuery("");
     setSelectedNodeName(foundNode.name);
   };
 
@@ -40,8 +45,9 @@ export const TreeRoot = (props) => {
     >
       <div className="tree__container">
         <TreeSearchBox
-          setSearchQuery={setSearchQuery}
+          searchQueryValue={searchQuery}
           onSearchNodeClick={onSearchNodeClick}
+          onSearchQueryChange={onSearchQueryChange}
         />
         {data.map((node) => {
           return <TreeNode key={node.name} node={node} />;
