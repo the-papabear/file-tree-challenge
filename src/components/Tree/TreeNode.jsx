@@ -25,7 +25,7 @@ export const TreeNode = (props) => {
     e.preventDefault();
 
     if (!newNodeName.trim()) {
-      return alert("Please input a node name");
+      return alert("Node name cannot be empty");
     }
 
     const nameCheck = findNodeByName({ nodes: data, newNodeName });
@@ -59,7 +59,7 @@ export const TreeNode = (props) => {
     e.preventDefault();
 
     if (!newNodeName.trim()) {
-      return alert("Please input a node name");
+      return alert("Node name cannot be empty");
     }
 
     const nameCheck = findNodeByName({ nodes: data, newNodeName });
